@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://org.jenkinsci.plugins/WeblogicDeploymentPlugin"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://org.jenkinsci.plugins/WeblogicDeploymentPlugin plugin-configuration.xsd"> 
+<weblogic-targets>
+    <weblogic-target>
+        <name>Local Weblogic Domain</name>
+        <host>127.0.0.1</host>
+        <port>7001</port>
+        <login>admin</login>
+        <password>Passw0rd</password>
+        <!-- <authMode>BY_KEY</authMode>
+        <userconfigfile>P:\Documents\perso\dev\wls-deploy-plugin\wls_userConfig.properties</userconfigfile>
+        <userkeyfile>P:\Documents\perso\dev\wls-deploy-plugin\wls_userConfig.key</userkeyfile> -->
+    </weblogic-target>
+</weblogic-targets>
+</config>

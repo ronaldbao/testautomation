@@ -9,8 +9,8 @@ xsi:schemaLocation="http://org.jenkinsci.plugins/WeblogicDeploymentPlugin plugin
         <port>7001</port>
         <login>admin</login>
         <password>Passw0rd</password>
-        <!-- <authMode>BY_KEY</authMode>
-        <userconfigfile>P:\Documents\perso\dev\wls-deploy-plugin\wls_userConfig.properties</userconfigfile>
+         <authMode>BY_LOGIN</authMode>
+        <!--<userconfigfile>P:\Documents\perso\dev\wls-deploy-plugin\wls_userConfig.properties</userconfigfile>
         <userkeyfile>P:\Documents\perso\dev\wls-deploy-plugin\wls_userConfig.key</userkeyfile> -->
     </weblogic-target>
 </weblogic-targets>

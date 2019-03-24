@@ -5,8 +5,138 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>ws_poc</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>telus-provisioning-nc-data-interfacess-ed-ws</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
 
+    <properties>
+        <jdk.version>1.7</jdk.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.4</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+            <version>2.0.1.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.9</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <!--<finalName>b2bAPI</finalName>-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.10</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8686</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                    <stopKey>STOP</stopKey>
+                    <stopPort>8005</stopPort>
+                    <!--used to change context path-->
+                    <contextPath>/</contextPath>
+                    <!--hot deployment -->
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <configuration>
+                    <schemaDirectory>src\main\webapp\WEB-INF</schemaDirectory>
+                    <schemaIncludes>
+                        <include>OrderService.xsd</include>
+                    </schemaIncludes>
+                    <generatePackage>com.netcracker.solutions.customers.telus.ed.integration.api.domain</generatePackage>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/generated-sources/xjc</source>
+                                <source>target/generated-sources/cxf</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--<plugin>-->
+                <!--<groupId>com.oracle.weblogic</groupId>-->
+                <!--<artifactId>weblogic-maven-plugin</artifactId>-->
+                <!--<version>12.1.2.0</version>-->
+                <!--<configuration>-->
+                    <!--<adminurl>t3://localhost:7001</adminurl>-->
+                    <!--<user>admin</user>-->
+                    <!--<password>Passw0rd</password>-->
+                    <!--<upload>true</upload>-->
+                    <!--<action>deploy</action>-->
+                    <!--<remote>false</remote>-->
+                    <!--<verbose>true</verbose>-->
+                    <!--<source>../marin-tips-ear/target/marin-tips.ear</source>-->
+                    <!--<name>${project.build.finalName}</name>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>install</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>deploy</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+
+        </plugins>
+    </build>
     
 </project>

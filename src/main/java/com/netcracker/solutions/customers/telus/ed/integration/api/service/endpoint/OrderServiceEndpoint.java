@@ -39,7 +39,7 @@ public class OrderServiceEndpoint {
         String fName=request.getOrder().getCustomer().getName().getFName();
         String lName=request.getOrder().getCustomer().getName().getLName();
         response.setRefNumber(orderService.placeOrder(fName,lName,refNumber));
-        System.out.println("add some changes 2");
+        System.out.println("add some changes 3");
         return marshal(response);
 
     }

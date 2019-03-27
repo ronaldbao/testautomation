@@ -1,4 +1,6 @@
-package junitcucumber;
+package BDDTest.user;
+
+
 
 public class User {
 

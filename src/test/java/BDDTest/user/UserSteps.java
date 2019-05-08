@@ -16,7 +16,7 @@ public class UserSteps {
 	public void certificationName(String name, String certication) throws Throwable {
 		user.setName(name);
 		user.setCertification(certication);
-	}
+	}git
 
 	@When("^(.*) got (\\d+) marks in exam$")
 	public void gotMarks(String name, int marks) throws Throwable {
